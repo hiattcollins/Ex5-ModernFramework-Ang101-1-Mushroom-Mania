@@ -1,0 +1,23 @@
+<article class="mushroom-display">
+	
+	<div>
+		<label for="inputText">Search by Description:</label>
+		<input type="text" ng-model="search.description" id="searchText" name="searchText">
+	</div>
+
+	<div ng-init="mushroom.edible = false">
+		<label for="mushroomType">Mushroom Type:</label><br>
+		<input type="radio" name="mushroomType" ng-model="mushroom.edible" ng-value="false">Poisonous<br>
+		<input type="radio" name="mushroomType" ng-model="mushroom.edible" ng-value="true">Non-Poisonous<br>
+	</div>
+
+	<header><h1>List of Mushrooms</h1></header>
+
+	<section>
+		<div ng-repeat="item in mushrooms | filter: {description: search.description, edible: mushroom.edible}">
+			<p>Name: <span class="capitalize">{{item.name}}</span></p>
+			<p>Description: {{item.description}}</p>
+		</div>
+	</section>
+
+</article>
